@@ -1,0 +1,59 @@
+{% extends 'admin/base_admin.html' %}
+{% load static %}
+
+{% block title %} admin membership {% endblock %}
+
+{% block content %}
+
+<div class="form">
+    <div class="form__container">
+        <h1 class="form__heading">Membership Create</h1>
+        <style>
+            iframe {
+            width: 1px;
+            min-width: 100%;
+            min-height: 700px;
+            border: 0;
+            }
+            @media only screen and(max-width: 600px) {
+            iframe {
+            min-height: 1000px;
+            }
+            }
+        </style>
+
+        <form action="" class="form__form"  method="POST">
+            {% csrf_token %}
+            <div class="form__field form__field--text ">
+                <label class="form__label" for="name">Membership Name</label>
+                <input class="form__input " id="name" name="name" type="text" required />
+            </div>
+
+            <div class="form__field form__field--text ">
+                <label class="form__label" for="description">Membership Description</label>
+                <input class="form__input" id="description" name="description" type="text" required  />
+            </div>
+
+            <div class="form__field form__field--text ">
+                <label class="form__label" for="price">Membership Price</label>
+                <input class="form__input" id="price" name="price" type="text" required  />
+            </div>
+
+            <div class="form__field form__field--text ">
+                <label class="form__label" for="coaches">Number of Coaches</label>
+                <input class="form__input" id="coaches" name="coaches" type="text" required />
+            </div>
+
+            <!-- <div class="form__field form__field--select ">
+                <select class="form__select js-select" id="field_4" name="Are you a Places Gym member?"  required >
+                    <option value="">Are you a Places Gym member?</option>
+                    <option value="Yes" >Yes</option>
+                    <option value="No" >No</option>
+                </select>
+            </div> -->
+
+            <button class="button button--border button--large form__submit" type="submit">Create</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

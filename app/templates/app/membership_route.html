@@ -1,0 +1,47 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %} Memberships {% endblock %}
+
+{% block content %}
+<div class="banner banner-- js-carousel">
+<div class="banner__slide banner__slide--picture" style="background:url('https://quoracles.ng/wp-content/uploads/2019/03/Gym-Center.jpg');">
+<div class="banner__container">
+<span class="banner__surtitle"></span>
+<span class="banner__title">Membership options</span>
+<span class="banner__subtitle">Find the perfect membership for you</span>
+</div>
+</div>
+</div>
+
+
+<div class="page-wrap">
+<div class="text-cols">
+<div class="text-cols__container text-cols__container--title">
+<h2 class="text-cols__title"> </h2>
+<div class="text-cols__col">
+<strong>Achieve more</strong>
+Whatever your choice, we have a range of memberships to suit you.
+</div>
+</div>
+</div>
+
+<div class="membership">
+    
+<div class="membership__container">
+    
+<div class="membership__options">
+{% for data in memberships %}
+    <div class="membership__item">
+    <div class="membership__option">
+    <span class="membership__title">{{data.membership_name}}</span>
+    <span class="membership__details">•Description: {{data.membership_description}} •Coaches: {{data.maximum_coach}} •Always Reliable</span>
+    <span class="membership__price">From ₦{{data.membership_price}}</span>
+    </div>
+    </div>
+{% endfor %}
+</div>
+<a class="button membership__button" href="{% url 'app:join-route' %}">Join Now</a>
+</div>
+</div>
+{% endblock %}

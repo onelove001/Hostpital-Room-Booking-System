@@ -1,0 +1,94 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %} Contact Us {% endblock %}
+
+{% block content %}
+
+<div class="banner banner-- js-carousel">
+    <div class="banner__slide banner__slide--picture" style="background:url('../../../static/wp-content/uploads/2019/04/Clip0066.MXF_.16_02_39_09.Still001-1920x822.jpg');">
+        <div class="banner__container">
+            <span class="banner__surtitle"></span>
+            <span class="banner__title">Contact us</span>
+            <span class="banner__subtitle"></span>
+        </div>
+    </div>
+</div>
+
+
+<div class="page-wrap">
+
+    <div class="introduction">
+        <div class="introduction__container introduction__container--title">
+            <h2 class="introduction__title">Please contact local gym for enquiries</h2>
+            <div class="introduction__text">
+                <p><strong>Gym 1</strong></p>
+                <div class="text-cols__item">
+                    <p><a href="tel:08099768928">08099768928</a><br />
+                    <a href="#">enquiries@placesgymhinckley.org</a></p>
+                    <p><strong>Gym 2</strong></p>
+                    <p><a href="tel:08099768928">08099768928</a><br />
+                    <a href="#">example@gym.com</a></p>
+                    <p><strong>Gym 3</strong></p>
+                    <p><a href="tel:08099768928">08099768928</a><br />
+                    <a href="#">example@gym.com</a></p>
+                </div> <p>&nbsp;</p>
+                <p style="text-align: left;"><strong>Complete the form below for any questions and comments</strong></p>
+                <p><strong>We&#8217;re always happy to help!</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="form">
+        <div class="form__container">
+            <h2 class="form__heading">Get in touch</h2>
+            <style>
+                iframe {
+                width: 1px;
+                min-width: 100%;
+                min-height: 700px;
+                border: 0;
+                }
+                @media only screen and(max-width: 600px) {
+                iframe {
+                min-height: 1000px;
+                }
+                }
+            </style>
+
+            <form action="#" class="form__form js-process-form" data-thanks="Thank you for contacting us, we will get back to you soon."  enctype="multipart/form-data" accept-charset="UTF-8">
+                <input type="hidden" name="email-recipient" value="cGdtYXJrZXRpbmdAcGZwbGVpc3VyZS5vcmc"/>
+                <div class="form__field form__field--text ">
+                    <label class="form__label" for="field_1">Name</label>
+                    <input class="form__input " id="field_1" name="Name" type="text"  required  />
+                </div>
+
+                <div class="form__field form__field--email ">
+                    <label class="form__label" for="field_2">Email</label>
+                    <input class="form__input " id="field_2" name="Email" type="email"  required  />
+                </div>      
+
+                <div class="form__field form__field--text ">
+                    <label class="form__label" for="field_3">Mobile number</label>
+                    <input class="form__input " id="field_3" name="Contact number" type="text"  required  />
+                </div>
+                <!-- <div class="form__field form__field--select ">
+                    <select class="form__select js-select" id="field_4" name="Are you a Places Gym member?"  required >
+                        <option value="">Are you a Places Gym member?</option>
+                        <option value="Yes" >Yes</option>
+                        <option value="No" >No</option>
+                    </select>
+                </div> -->
+
+                <div class="form__field form__field--text ">
+                    <label class="form__label" for="field_7">Address</label>
+                    <input class="form__input " id="field_7" name="Enter date & time for your chosen tour here" type="text"  required  />
+                </div>
+
+                <button class="button button--border button--large form__submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    
+</div>
+{% endblock %}

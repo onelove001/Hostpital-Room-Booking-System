@@ -1,0 +1,47 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %} Classes {% endblock %}
+
+{% block content %}
+<div class="banner banner-- js-carousel">
+<div class="banner__slide banner__slide--picture" style="background:url('https://www.fitnessnc.com/wp-content/uploads/2021/01/g.jpg');">
+<div class="banner__container">
+<span class="banner__surtitle"></span>
+<span class="banner__title">Find Your Class Option</span>
+<span class="banner__subtitle">Take a look below at the group exercise classes we offer</span>
+</div>
+</div>
+</div>
+
+
+<div class="page-wrap">
+<div class="text-cols">
+<div class="text-cols__container text-cols__container--title">
+<h2 class="text-cols__title"> </h2>
+<div class="text-cols__col">
+<strong>Achieve more</strong>
+Whatever your choice, we have a range of classes to suit you.
+</div>
+</div>
+</div>
+
+<div class="membership">
+    
+<div class="membership__container">
+    
+<div class="membership__options">
+{% for data in classes %}
+    <div class="membership__item">
+    <div class="membership__option">
+    <span class="membership__title">{{data.class_name}}</span>
+    <span class="membership__details">• Description: {{data.class_description}} • Coach: {{data.coach.coach_firstname}} {{data.coach.coach_lastname}}</span>
+    <span class="membership__price">{{data.date_created}}</span>
+    </div>
+    </div>
+{% endfor %}
+</div>
+<a class="button membership__button" href="{% url 'app:join-route' %}">Join Now</a>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'admin/base_admin.html' %}
+{% load static %}
+
+{% block title %} admin class {% endblock %}
+
+{% block content %}
+
+<div class="form">
+    <div class="form__container">
+        <h1 class="form__heading">Class Create</h1>
+        <style>
+            iframe {
+            width: 1px;
+            min-width: 100%;
+            min-height: 700px;
+            border: 0;
+            }
+            @media only screen and(max-width: 600px) {
+            iframe {
+            min-height: 1000px;
+            }
+            }
+        </style>
+
+        <form action="" class="form__form"  method="POST">
+            {% csrf_token %}
+
+            <div class="form__field form__field--text ">
+                <label class="form__label" for="class_name">Class Name</label>
+                <input class="form__input " id="class_name" name="class_name" type="text" required />
+            </div>
+
+            <div class="form__field form__field--text ">
+                <label class="form__label" for="description">Class Description</label>
+                <input class="form__input" id="description" name="description" type="text" required  />
+            </div>
+
+            <div class="form__field form__field--select ">
+                <select class="form__select js-select" id="field_4" name="coach"  required >
+                    <option value="">Select Coach</option>
+                    {% for coach in coaches %}
+                        <option value={{coach.id}} >{{coach.coach_firstname}} {{coach.coach_lastname}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <button class="button button--border button--large form__submit" type="submit">Create</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

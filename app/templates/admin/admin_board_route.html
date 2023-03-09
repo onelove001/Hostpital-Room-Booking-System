@@ -1,0 +1,126 @@
+{% extends 'admin/base_admin.html' %}
+
+{% load static %}
+
+{% block title %} admin-dashboard {% endblock %}
+{% block bootstrap %} <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"> {% endblock %}
+{% block content %}
+<br><h2>Coaches, Memberships and Classes </h2><hr><br>
+<!-- <div class = "container"> -->
+    <div class="row">
+        <!-- Coaches -->
+        <div class="col-4">
+            <div class="table">
+                <table class="table table-dark table-bordered table-stripped table-responsive table-hover">
+                    <thead>
+                        <tr>
+                            <td>#ID</td>
+                            <td>Coach FullName</td>
+                            <td>Coach Addres</td>
+                            <td>Coach Mobile</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for coach in coaches %}
+                        <tr>
+                            <td> {{coach.id}} </td>
+                            <td> {{coach.coach_firstname}} {{coach.coach_lastname}}</td>
+                            <td> {{coach.coach_address}}</td>
+                            <td> {{coach.coach_mobile}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Memberships -->
+        <div class="col-4">
+            <div class="table">
+                <table class="table table-dark table-bordered table-stripped table-responsive table-hover">
+                    <thead>
+                        <tr>
+                            <td>#ID</td>
+                            <td>Membership Type</td>
+                            <td>Description</td>
+                            <td>Membership Price</td>
+                            <td>Maximum Coach</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for member in memberships %}
+                        <tr>
+                            <td> {{member.id}} </td>
+                            <td> {{member.membership_name}}</td>
+                            <td> {{member.membership_description}}</td>
+                            <td> {{member.membership_price}}</td>
+                            <td> {{member.maximum_coach}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Classes  -->
+        <div class="col-4">
+            <div class="table">
+                <table class="table table-dark table-bordered table-stripped table-responsive table-hover">
+                    <thead>
+                        <tr>
+                            <td>#ID</td>
+                            <td>Class Name</td>
+                            <td>Class Description</td>
+                            <td>Class Coach</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for class in classes %}
+                        <tr>
+                            <td>{{class.id}}</td>
+                            <td>{{class.class_name}}</td>
+                            <td>{{class.class_description}}</td>
+                            <td>{{class.coach.coach_firstname}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+<!-- </div> -->
+<br><h2>Gym Request Sessions</h2><hr><br>
+<div class="table">
+    <table class="table table-dark table-bordered table-stripped table-responsive table-hover">
+        <thead>
+            <tr>
+                <td>#ID</td>
+                <td>Full name</td>
+                <td>Username</td>
+                <td>Address</td>
+                <td>Class</td>
+                <td>Membership</td>
+                <td>Schedule</td>
+                <td>Status</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for gym in gym_profiles %}
+            <tr>
+                <td> {{gym.id}} </td>
+                <td> {{gym.profile.user_profile.first_name}} {{gym.profile.user_profile.last_name}}</td>
+                <td> {{gym.profile.user_profile.username}}</td>
+                <td> {{gym.profile.address_location}} </td>
+                <td> {{gym.class_id}} </td>
+                <td> {{gym.membership_id}} </td>
+                <td> {{gym.schedule}} </td>
+                <td> {% if gym.status %}<span class="text-success">Approved</span> {% else %} <span class="text-warning">Pending</span> {% endif %}</td>
+                <td> {% if gym.status %}<a href="{% url 'app:approve-or-dissaprove-route' gym.id %}" class="btn btn-danger">Disaprove</a> {% else %} <a href="{% url 'app:approve-or-dissaprove-route' gym.id %}" class="btn btn-success">Approve</a> {% endif %}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
