@@ -1,0 +1,63 @@
+{% extends 'admin/base_admin.html' %}
+{% load static %}
+
+{% block title %} UpdateStaff {% endblock %}
+
+{% block content %}
+
+<div class="form">
+    <div class="form__container">
+        <h1 class="form__heading">Staff Update</h1>
+        <style>
+            iframe {
+            width: 1px;
+            min-width: 100%;
+            min-height: 700px;
+            border: 0;
+            }
+            @media only screen and(max-width: 600px) {
+            iframe {
+            min-height: 1000px;
+            }
+            }
+        </style>
+
+        <form action="" class="form__form"  method="POST">
+            {% csrf_token %}
+            <div class="form__field form__field--text ">
+                <label class="form__label" for="first_name">First Name</label>
+                <input class="form__input " id="first_name" name="first_name" type="text" value="{{staff.first_name}}" required />
+            </div>
+
+            <div class="form__field form__field--text ">
+                <label class="form__label" for="last_name">Last Name</label>
+                <input class="form__input " id="last_name" name="last_name" type="text" value="{{staff.last_name}}" required />
+            </div>
+
+            <div class="form__field form__field--text ">
+                <label class="form__label" for="username">Username</label>
+                <input class="form__input " id="username" name="username" type="text" value="{{staff.username}}" disabled />
+            </div>
+    
+
+            <div class="form__field form__field--text ">
+                <label class="form__label" for="phone">Mobile Number</label>
+                <input class="form__input" id="phone" name="phone" type="text" value="{{staff.staff.phone_no}}" required  />
+            </div>
+
+            <button class="button button--border button--large form__submit" type="submit">Update</button>
+            {% if messages %}
+                <br><br>
+                {% for message in messages %}
+                    {% if message.tags == 'error' %}
+                        <h3 style="color:rgba(255, 0, 0, 0.944)"> {{ message }} </h3>
+                    {% elif message.tags == 'success' %}
+                        <div style = 'color:rgb(47, 255, 57)'> {{ message }}</div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </form>
+    </div>
+</div>
+<br><br><br><br><br>
+{% endblock %}

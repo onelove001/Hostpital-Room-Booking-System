@@ -61,11 +61,16 @@ def join_route(request):
         first_name = request.POST.get("first_name")
         last_name = request.POST.get("last_name")
         username = request.POST.get("username")
-        email = request.POST.get("email")
         mobile = request.POST.get("mobile")
+        gender = request.POST.get("gender")
+        dob = request.POST.get("dob")
+        phone = request.POST.get("phone")
         password = request.POST.get("password")
-        user = User.objects.create_user(username = username, first_name = first_name, last_name = last_name, email = email, password = password)
-        user.save()
+        patient = CustomUser.objects.create_user(account_type = 2, username = username, first_name = first_name, last_name = last_name,  password = password)
+        patient.gender = gender
+        patient.dateOfBirth = dob
+        patient.phone_no = phone
+        patient.save()
         return redirect("app:login-route")
     context = {}
     return render(request, "app/join_route.html", context)

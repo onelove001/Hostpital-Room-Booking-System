@@ -72,19 +72,22 @@
         <ul class="navigation__list">
             {% if request.user.is_authenticated %}
             <li class="navigation__item  menu-item menu-item-type-custom menu-item-object-custom menu-item-603">
-                <a class="navigation__link" href="{% url 'app:create-class-route' %}" title="Classes">Create Class</a>
+                <a class="navigation__link" href="{% url 'app:create-staff' %}" title="create staff">Create Staff</a>
             </li>
             <li class="navigation__item  menu-item menu-item-type-custom menu-item-object-custom menu-item-603">
-                <a class="navigation__link" href="{% url 'app:create-coach-route' %}" title="Coaches">Create Coach</a>
-            </li>
-            <li class="navigation__item  menu-item menu-item-type-post_type menu-item-object-page menu-item-15">
-                <a class="navigation__link" href="{% url 'app:create-membership-route' %}" title="Membership">Create Membership</a>
+                <a class="navigation__link" href="{% url 'app:create-room' %}" title="create room">Create Room</a>
             </li>
             <li class="navigation__item  menu-item menu-item-type-custom menu-item-object-custom menu-item-16">
-                <a class="navigation__link" href="{% url 'app:admin-dashboard-route' %}" title="Gyms">Gyms</a>
+                <a class="navigation__link" href="{% url 'app:manage-staffs' %}" title="manage staffs">Manage Staffs</a>
+            </li>
+            <li class="navigation__item  menu-item menu-item-type-custom menu-item-object-custom menu-item-16">
+                <a class="navigation__link" href="{% url 'app:manage-rooms' %}" title="manage rooms">Manage Rooms</a>
+            </li>
+            <li class="navigation__item  menu-item menu-item-type-post_type menu-item-object-page menu-item-15">
+                <a class="navigation__link" href="{% url 'app:admin-dashboard-route' %}" title="view all">Dashboard</a>
             </li>
             <li class="navigation__item button button--secondary button--small mobile-hide menu-item menu-item-type-custom menu-item-object-custom menu-item-2244">
-                <a class="navigation__link" href="{% url 'app:logout-route' %}" title="Log in">Sign Out</a>
+                <a class="navigation__link" href="" title="sign out">Sign Out</a>
             </li>     
             {% endif %}
         </ul>
