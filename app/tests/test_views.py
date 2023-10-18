@@ -22,11 +22,18 @@ class TestViews(TestCase):
         self.assertTemplateUsed(response, "app/contact_route.html")
 
     
-    def test_blog_route_GET(self):
-        response = self.client.get(reverse("app:blog-route"))
+    def test_add_patient_route_GET(self):
+        response = self.client.get(reverse("app:add-patient"))
 
         self.assertEquals(response.status_code, 200)
-        self.assertTemplateUsed(response, "app/blog_route.html")
+        self.assertTemplateUsed(response, "staff/add_patient.html")
+
+
+    def test_manage_patient_route_GET(self):
+        response = self.client.get(reverse("app:manage-patients"))
+
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, "staff/manage_patients.html")
 
 
     def test_faq_route_GET(self):

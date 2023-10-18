@@ -16,7 +16,7 @@ def create_staff(request):
         username = request.POST.get("username")
         phone  = request.POST.get("phone")
         password  = request.POST.get("password")
-        staff = CustomUser.objects.create_user(account_type=1, first_name = first_name, last_name = last_name, username = username)
+        staff = CustomUser.objects.create_user(account_type=1, first_name = first_name, last_name = last_name, username = username, password=password)
         staff.staff.phone_no = phone
         staff.save()
         messages.success(request, "Staff Created!")

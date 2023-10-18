@@ -1,0 +1,72 @@
+{% extends 'staff/base_staff.html' %}
+{% load static %}
+
+{% block title %} PayBill {% endblock %}
+
+{% block content %}
+<div class="form">
+    <div class="form__container">
+        <h1 class="form__heading">Billing | @{{occupant.patient_id.username}}</h1>
+        <style>
+            iframe {
+            width: 1px;
+            min-width: 100%;
+            min-height: 700px;
+            border: 0;
+            }
+            @media only screen and(max-width: 600px) {
+            iframe {
+            min-height: 1000px;
+            }
+            }
+        </style>
+        <form action="" class="form__form"  method="POST">
+            {% csrf_token %}
+
+            <div class="form__field form__field--text ">
+                <label class="form__label" for="room_number"></label>
+                <input class="form__input " id="room_number" name="room_number" type="text" disabled value="Room {{occupant.room_id.room_number}}" />
+                <input type="hidden" name="room_id" value="{{occupant.room_id.id}}">
+            </div>
+
+            <div class="form__field form__field--text ">
+                <label class="form__label" for="full_name">Full Name On Card</label>
+                <input class="form__input " id="full_name" name="full_name" type="text" required />
+            </div>
+
+            <div class="form__field form__field--text ">
+                <label class="form__label" for="card_number">Card Number</label>
+                <input class="form__input" id="card_number" name="card_number" type="text" required  />
+            </div> 
+
+            <div class="form__field form__field--text ">
+                <label class="form__label" for="expire">Expiry Date</label>
+                <input class="form__input" id="expire" name="expire" type="text" required  />
+            </div> 
+
+            <div class="form__field form__field--text ">
+                <label class="form__label" for="cvv">CVV</label>
+                <input class="form__input " id="cvv" name="cvv" type="text" required />
+            </div>
+
+            <div class="form__field form__field--text ">
+                <label class="form__label" for="amount">Amount</label>
+                <input class="form__input" id="amount" name="amount" type="number" required  />
+            </div>
+
+            <button class="button button--border button--large form__submit" type="submit">Make Payment</button>
+            {% if messages %}
+                 <br><br>
+                {% for message in messages %}
+                    {% if message.tags == 'error' %}
+                        <h3 style="color:rgba(255, 0, 0, 0.944)"> {{ message }} </h3>
+                    {% elif message.tags == 'success' %}
+                        <div style = 'color:rgb(47, 255, 57)'> {{ message }}</div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </form>
+    </div>
+</div>
+<br><br><br><hr><br><br>
+{% endblock %}

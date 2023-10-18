@@ -1,0 +1,78 @@
+{% extends 'staff/base_staff.html' %}
+
+{% load static %}
+
+{% block title %} UpdatePatient {% endblock %}
+
+{% block content %}
+<div class="form">
+    <div class="form__container">
+        <h1 class="form__heading">Update Patient</h1>
+        <style>
+            iframe {
+            width: 1px;
+            min-width: 100%;
+            min-height: 700px;
+            border: 0;
+            }
+            @media only screen and(max-width: 600px) {
+            iframe {
+            min-height: 1000px;
+            }
+            }
+        </style>
+        <form action="" class="form__form"  method="POST">
+            {% csrf_token %}
+            <div class="form__field form__field--text ">
+                <label class="form__label" for="first_name">First Name</label>
+                <input class="form__input " id="first_name" name="first_name" type="text" required value = "{{patient.first_name}}"/>
+            </div>
+
+            <div class="form__field form__field--text ">
+                <label class="form__label" for="last_name">Last Name</label>
+                <input class="form__input " id="last_name" name="last_name" type="text" required value = "{{patient.last_name}}"/>
+            </div>
+
+            <div class="form__field form__field--text ">
+                <label class="form__label" for="username">Username</label>
+                <input class="form__input" id="username" name="username" type="text" required  value = "{{patient.username}}"/>
+            </div>
+
+            <div class="form__field form__field--text">
+                <input class="form__input" id="dob" name="dob" type="text" disabled  value = "{{patient.dob}}"/>
+            </div>      
+
+            <div class="form__field form__field--text ">
+                <label class="form__label" for="phone">Mobile number</label>
+                <input class="form__input" id="phone" name="phone" type="text" required  value = "{{patient.phone_no}}"/>
+            </div>
+
+            <div class="form__field form__field--text ">
+                <label class="form__label" for="address">Address</label>
+                <input class="form__input" id="address" name="address" type="text" required  value = "{{patient.address}}"/>
+            </div>
+
+            <div class="form__field form__field--select ">
+                <select class="form__select js-select" id="field_4" name="gender"  required>
+                    <option value="">Gender</option>
+                    <option value="M" {% if patient.gender == 'M' %} selected {% endif %}>M</option>
+                    <option value="F" {% if patient.gender == 'F' %} selected {% endif %}>F</option>
+                </select>
+            </div>
+
+            <button class="button button--border button--large form__submit" type="submit">Update</button>
+            {% if messages %}
+                 <br><br>
+                {% for message in messages %}
+                    {% if message.tags == 'error' %}
+                        <h3 style="color:rgba(255, 0, 0, 0.944)"> {{ message }} </h3>
+                    {% elif message.tags == 'success' %}
+                        <div style = 'color:rgb(47, 255, 57)'> {{ message }}</div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </form>
+    </div>
+</div>
+<br><br><br><hr><br><br>
+{% endblock %}

@@ -1,6 +1,7 @@
 from django.test import SimpleTestCase
 from django.urls import reverse, resolve
 from app.views import *
+from app.staff_views import *
 
 class TestUrls(SimpleTestCase):
 
@@ -24,8 +25,22 @@ class TestUrls(SimpleTestCase):
         self.assertEquals(path.func, faq_route)
 
     
-    def test_gym_route_is_resolved(self):
+    def test_dashboard_route_is_resolved(self):
         
-        url = reverse("app:gym-route")
+        url = reverse("app:staff-dashboard-route")
         path = (resolve(url))
-        self.assertEquals(path.func, my_gym_route)
+        self.assertEquals(path.func, staff_dashboard_route)
+
+
+    def test_add_patient_is_resolved(self):
+        
+        url = reverse("app:add-patient")
+        path = (resolve(url))
+        self.assertEquals(path.func, add_patient)
+
+
+    def test_manage_patients_is_resolved(self):
+        
+        url = reverse("app:manage-patients")
+        path = (resolve(url))
+        self.assertEquals(path.func, manage_patients)

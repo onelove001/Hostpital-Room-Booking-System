@@ -70,39 +70,15 @@
 
     <nav class="navigation" role="navigation">
         <ul class="navigation__list">
-            <li class="navigation__item  menu-item menu-item-type-post_type menu-item-object-page menu-item-15">
-                <a class="navigation__link" href="{% url 'app:membership-route' %}" title="Membership">Membership</a>
-            </li>
-            <li class="navigation__item  menu-item menu-item-type-post_type menu-item-object-page menu-item-558">
-                <a class="navigation__link" href="{% url 'app:blog-route' %}" title="Blog">Blog</a>
-            </li>
             <li class="navigation__item  menu-item menu-item-type-custom menu-item-object-custom menu-item-17">
                 <a class="navigation__link" href="{% url 'app:faq-route' %}" title="FAQs">FAQs</a>
             </li>
             <li class="navigation__item  menu-item menu-item-type-post_type menu-item-object-page menu-item-2942">
                 <a class="navigation__link" href="{% url 'app:contact-route' %}" title="Contact us">Contact us</a>
             </li>
-            {% if request.user.is_authenticated %}
-            <li class="navigation__item  menu-item menu-item-type-custom menu-item-object-custom menu-item-16">
-                <a class="navigation__link" href="{% url 'app:gym-route' %}" title="Gyms">Gyms</a>
-            </li>
-            <li class="navigation__item  menu-item menu-item-type-custom menu-item-object-custom menu-item-603">
-                <a class="navigation__link" href="{% url 'app:coach-route' %}" title="Coaches">Coaches</a>
-            </li>
-            <li class="navigation__item  menu-item menu-item-type-custom menu-item-object-custom menu-item-603">
-                <a class="navigation__link" href="{% url 'app:class-route' %}" title="Classes">Classes</a>
-            </li>
-            <li class="navigation__item button button--secondary button--small mobile-hide menu-item menu-item-type-custom menu-item-object-custom menu-item-2244">
-                <a class="navigation__link" href="{% url 'app:logout-route' %}" title="Log in">Sign Out</a>
-            </li>     
-            {% else %}
-            <li class="navigation__item button button--secondary button--small mobile-hide menu-item menu-item-type-custom menu-item-object-custom menu-item-2519">
-                <a class="navigation__link" href="{% url 'app:join-route' %}" title="Join">Join Now!</a>
-            </li>
             <li class="navigation__item button button--secondary button--small mobile-hide menu-item menu-item-type-custom menu-item-object-custom menu-item-2244">
                 <a class="navigation__link" href="{% url 'app:login-route' %}" title="Log in">Log in</a>
             </li>
-            {% endif %}
         </ul>
     </nav>
 </header>

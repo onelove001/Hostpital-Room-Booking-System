@@ -1,12 +1,12 @@
-{% extends 'app/base.html' %}
+{% extends 'staff/base_staff.html' %}
 {% load static %}
 
-{% block title %} Sign Up {% endblock %}
+{% block title %} AddPatient {% endblock %}
 
 {% block content %}
 <div class="form">
     <div class="form__container">
-        <h1 class="form__heading">Join Us Now</h1>
+        <h1 class="form__heading">Add Patient</h1>
         <style>
             iframe {
             width: 1px;
@@ -20,7 +20,6 @@
             }
             }
         </style>
-
         <form action="" class="form__form"  method="POST">
             {% csrf_token %}
             <div class="form__field form__field--text ">
@@ -39,13 +38,23 @@
             </div>
 
             <div class="form__field form__field--text">
-                <label class="form__label" for="dob">Date Of Birth</label>
+                <label class="form__label" for="date_out">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Date Of Birth</label>
                 <input class="form__input" id="dob" name="dob" type="date"  required  />
             </div>      
 
             <div class="form__field form__field--text ">
-                <label class="form__label" for="mobile_number">Mobile number</label>
-                <input class="form__input" id="mobile_number" name="mobile_number" type="text" required  />
+                <label class="form__label" for="phone">Mobile number</label>
+                <input class="form__input" id="phone" name="phone" type="text" required  />
+            </div>
+
+            <div class="form__field form__field--text ">
+                <label class="form__label" for="address">Address</label>
+                <input class="form__input" id="address" name="address" type="text" required  />
             </div>
 
             <div class="form__field form__field--select ">
@@ -56,13 +65,19 @@
                 </select>
             </div>
 
-            <div class="form__field form__field--text ">
-                <label class="form__label" for="password">Password</label>
-                <input class="form__input" id="password" name="password" type="password" required />
-            </div>
-
             <button class="button button--border button--large form__submit" type="submit">Create</button>
+            {% if messages %}
+                 <br><br>
+                {% for message in messages %}
+                    {% if message.tags == 'error' %}
+                        <h3 style="color:rgba(255, 0, 0, 0.944)"> {{ message }} </h3>
+                    {% elif message.tags == 'success' %}
+                        <div style = 'color:rgb(47, 255, 57)'> {{ message }}</div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
         </form>
     </div>
 </div>
+<br><br><br><hr><br><br>
 {% endblock %}
